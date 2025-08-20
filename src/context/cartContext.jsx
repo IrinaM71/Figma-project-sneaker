@@ -1,7 +1,10 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
-const BASE_URL = "https://664623b951e227f23aadf146.mockapi.io";
+
+export const BASE_URL = "https://664623b951e227f23aadf146.mockapi.io";
+
 const CartContext = createContext();
+
 const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   async function fetchCartItems() {
@@ -12,6 +15,10 @@ const CartProvider = ({ children }) => {
       console.error("Error occured when fetching cart items: ", error);
     }
   }
+
+  useEffect(() => {
+    fetchCartItems();
+  }, []);
   // add item to cart
   // post -> BASE_URL/cartData
   // remove item from cart
@@ -22,4 +29,5 @@ const CartProvider = ({ children }) => {
     </CartContext.Provider>
   );
 };
+export const useCart = () => useContext(CartContext);
 export default CartProvider;

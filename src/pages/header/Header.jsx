@@ -1,4 +1,4 @@
-import styles from "./HeaderStyles.module.css";
+import styles from "./Header.module.css";
 import { NavLink } from "react-router-dom";
 
 const menuList = [
@@ -18,7 +18,7 @@ const menuList = [
 
 function Header() {
   return (
-    <header>
+    <header className={styles.header}>
       <h1>Магазин кросовок</h1>
       <nav>
         {menuList.map((menuItem) => {
