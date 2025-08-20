@@ -1,8 +1,12 @@
+import styles from "../main/Main.module.css";
 import { useState, useEffect } from "react";
 import { BASE_URL } from "../../context/cartContext";
 import axios from "axios";
+import banner from "../../assets/pngs/banner.png";
+
 function Main() {
   const [products, setProducts] = useState([]);
+
   async function fetchProducts() {
     try {
       const response = await axios.get(`${BASE_URL}/productData`);
@@ -17,7 +21,10 @@ function Main() {
   return (
     <main>
       {/* <News /> */}
-      <h1>Товары</h1>
+      <div>
+        <img className={styles.banner_img} src={banner} alt="" />
+      </div>
+      <h1>Products</h1>
       <div>
         {products.map(({ id, name, image, price }) => {
           // <ProductCard>

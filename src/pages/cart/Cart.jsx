@@ -1,9 +1,9 @@
 import styles from "./Cart.module.css";
 import { useCart } from "../../context/cartContext";
-import CartCard from "../cartCard/CartCard";
+import CartCard from "../../components/cartCard/CartCard";
 
 function Cart() {
-  const { CartItems } = useCart;
+  const { CartItems } = useCart();
   const totalPrice = CartItems.reduce(
     (total, item) => total + parseFloat(item.price),
     0
@@ -17,9 +17,9 @@ function Cart() {
       ) : (
         <>
           <div>
-            {CartItems.map((item) => {
-              <CartCard key={item.id} product={item} />;
-            })}
+            {CartItems.map((item) => (
+              <CartCard key={item.id} product={item} />
+            ))}
           </div>
           <div>Total price: {totalPrice.toLocaleString()}</div>
         </>

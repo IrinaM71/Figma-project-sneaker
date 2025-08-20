@@ -1,9 +1,9 @@
 import "./App.css";
 import { Routes, Route } from "react-router";
-import Header from "./pages/header";
-import Main from "./pages/main";
-import Cart from "./pages/cart";
-import Contacts from "./pages/contacts";
+import Header from "./components/header/Header";
+import Main from "./pages/main/Main";
+import Cart from "./pages/cart/Cart";
+import Contact from "./pages/contacts/Contact";
 import CartProvider from "./context/cartContext";
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/contacts" element={<Contacts />} />
+          <Route path="/contacts" element={<Contact />} />
           <Route path="*" element={<h1>404 Page Not Found</h1>} />
         </Routes>
         {/* Footer */}

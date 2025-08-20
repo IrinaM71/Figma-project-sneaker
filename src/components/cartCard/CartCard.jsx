@@ -1,6 +1,6 @@
 import { useCart } from "../../context/cartContext";
 
-function CartCard() {
+function CartCard({ product }) {
   const { removeFromCart } = useCart();
   const handleRemove = () => {
     removeFromCart(product.id);
@@ -10,7 +10,7 @@ function CartCard() {
       <img src={product.image} alt={product.name} />
       <h3>{product.name}</h3>
       <div>
-        Price: <P>{product.price} EURO</P>
+        Price: <P>{product.price} Euro</P>
       </div>
       <button onClick={handleRemove}>Delete</button>
     </div>
