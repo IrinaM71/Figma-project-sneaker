@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { BASE_URL } from "../../context/cartContext";
 import axios from "axios";
 import banner from "../../assets/pngs/banner.png";
+import ProductCard from "../../components/productCard/ProductCard";
 
 function Main() {
   const [products, setProducts] = useState([]);
@@ -12,7 +13,7 @@ function Main() {
       const response = await axios.get(`${BASE_URL}/productData`);
       setProducts(response.data);
     } catch (error) {
-      console.error("Error occured when fetching products: ", error);
+      console.error("Error occurred when fetching products: ", error);
     }
   }
   useEffect(() => {
@@ -20,21 +21,21 @@ function Main() {
   }, []);
   return (
     <main>
-      {/* <News /> */}
-      <div>
+      {/* <News /> */}/
+      <div className={styles.productList}>
         <img className={styles.banner_img} src={banner} alt="" />
       </div>
       <h1>Products</h1>
       <div>
         {products.map(({ id, name, image, price }) => {
-          // <ProductCard>
           return (
-            <div key={id}>
-              <h1>{name}</h1>
-              <img src={products[0].image} alt="" />
-              <h2>Price: {price}</h2>
+            <div key={id} className={styles.productCard}>
+              <h3>{name}</h3>
+              <img src={image} alt={name} />
+              <p>Price: {price}</p>
             </div>
           );
+          <ProductCard />;
         })}
       </div>
     </main>

@@ -6,7 +6,7 @@ export const BASE_URL = "https://664623b951e227f23aadf146.mockapi.io";
 export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]);
+  const [CartItems, setCartItems] = useState([]);
 
   async function fetchCartItems() {
     try {
@@ -40,7 +40,7 @@ const CartProvider = ({ children }) => {
   };
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart }}>
+    <CartContext.Provider value={{ CartItems, addToCart, removeFromCart }}>
       {children}
     </CartContext.Provider>
   );

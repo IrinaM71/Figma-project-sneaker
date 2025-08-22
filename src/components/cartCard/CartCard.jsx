@@ -10,7 +10,7 @@ function CartCard({ product }) {
       <img src={product.image} alt={product.name} />
       <h3>{product.name}</h3>
       <div>
-        Price: <P>{product.price} Euro</P>
+        Price: <p>{product.price} Euro</p>
       </div>
       <button onClick={handleRemove}>Delete</button>
     </div>

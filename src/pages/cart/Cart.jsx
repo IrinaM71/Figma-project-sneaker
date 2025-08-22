@@ -4,10 +4,10 @@ import CartCard from "../../components/cartCard/CartCard";
 
 function Cart() {
   const { CartItems } = useCart();
-  const totalPrice = CartItems.reduce(
-    (total, item) => total + parseFloat(item.price),
-    0
-  );
+  const totalPrice = CartItems.reduce((total, item) => {
+    const price = parseFloat(item.price);
+    return total + (isNaN(price) ? 0 : price);
+  }, 0);
 
   return (
     <div className={styles.cart}>
@@ -16,7 +16,7 @@ function Cart() {
         <p>Your cart is empty.</p>
       ) : (
         <>
-          <div>
+          <div className={styles.cartItems}>
             {CartItems.map((item) => (
               <CartCard key={item.id} product={item} />
             ))}
