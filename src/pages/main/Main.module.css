@@ -1,0 +1,29 @@
+.main {
+  max-width: 1450px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+  margin-top: 20px;
+}
+
+.baner {
+  max-width: 1420px;
+  width: 100%;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 700;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 40px;
+  margin-bottom: 45px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 386px));
+  justify-content: center;
+  column-gap: 130px;
+  row-gap: 90px;
+  margin-bottom: 172px;
+}
