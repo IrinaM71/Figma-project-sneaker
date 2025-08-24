@@ -19,7 +19,7 @@ const menuList = [
 function Header() {
   return (
     <header className={styles.header}>
-      <h1>Магазин кросовок</h1>
+      <h1>Сникер - магазин</h1>
       <nav>
         {menuList.map((menuItem) => {
           return (

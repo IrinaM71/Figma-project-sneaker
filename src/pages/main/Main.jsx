@@ -32,7 +32,7 @@ function Main() {
             <div key={id} className={styles.productCard}>
               <h3>{name}</h3>
               <img src={image} alt={name} />
-              <p>Price: {price}</p>
+              <p>Price: {price} Euro</p>
             </div>
           );
           <ProductCard />;
