@@ -1,0 +1,70 @@
+.footer {
+  margin-top: auto;
+  background-color: #2f2f2f;
+  color: #ffffff;
+}
+
+.containerFooter {
+  max-width: 1450px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 73px 15px 48px;
+}
+
+.data {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 90px;
+}
+
+.contacts {
+  h3 {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.23;
+    color: #ffffff;
+    margin-bottom: 100px;
+  }
+  a {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.23;
+    color: #ffffff;
+  }
+  .telefon {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.23;
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+}
+
+.fasebook {
+  display: flex;
+  gap: 25px;
+}
+
+.icons {
+  max-width: 32px;
+  max-height: 32px;
+}
+
+.input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.input input {
+  max-width: 260px;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #bfbfbf;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.23;
+}

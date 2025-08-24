@@ -7,10 +7,12 @@ function Footer() {
   return (
     <Footer className={styles.Footer}>
       <div className={styles.containerFooter}>
-        <div className={styles.top}>
+        <div className={styles.data}>
           <div className={styles.contacts}>
             <h3>Контакты</h3>
-            <a href="">8 800 000 00 00</a>
+            <a href="" className={styles.telefon}>
+              8 800 000 00 00
+            </a>
             <a href="">emailexample@email.components</a>
           </div>
           <div className={styles.fasebook}>
