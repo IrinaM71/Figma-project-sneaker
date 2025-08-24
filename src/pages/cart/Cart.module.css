@@ -1,18 +1,15 @@
-.header {
-  display: flex;
-  background-color: #3b3c3d;
-  justify-content: space-between;
-  align-items: center;
-  padding: 42px 250px;
-  color: white;
-  nav {
-    display: flex;
-    gap: 64px;
-    a {
-      color: white;
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: 600;
-    }
-  }
+.cart {
+  max-width: 1450px;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 172px;
+  padding: 0 15px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 700;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 37px;
+  margin-bottom: 45px;
 }

@@ -4,24 +4,24 @@ import CartCard from "../../components/cartCard/CartCard";
 
 function Cart() {
   const { CartItems } = useCart();
-  const totalPrice = CartItems.reduce((total, item) => {
-    const price = parseFloat(item.price);
-    return total + (isNaN(price) ? 0 : price);
-  }, 0);
+  const totalPrice = CartItems.reduce(
+    (total, item) => total + parseFloat(item.price),
+    0
+  );
 
   return (
     <div className={styles.cart}>
-      <h2>Basket</h2>
+      <h2 className={styles.title}>Корзина</h2>
       {CartItems.length === 0 ? (
-        <p>Your cart is empty.</p>
+        <p>Зднсь пока ничего нет.</p>
       ) : (
         <>
-          <div className={styles.cartItems}>
+          <div>
             {CartItems.map((item) => (
               <CartCard key={item.id} product={item} />
             ))}
           </div>
-          <div>Total price: {totalPrice.toLocaleString()}</div>
+          <div>Цена: {totalPrice.toLocaleString("eu-EU")}EUR</div>
         </>
       )}
     </div>

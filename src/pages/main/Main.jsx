@@ -7,36 +7,36 @@ import ProductCard from "../../components/productCard/ProductCard";
 
 function Main() {
   const [products, setProducts] = useState([]);
-
-  async function fetchProducts() {
+  const fetchProducts = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/productData`);
-      setProducts(response.data);
+      const { data } = await axios.get(`${BASE_URL}/productData`);
+
+      setProducts(data);
     } catch (error) {
-      console.error("Error occurred when fetching products: ", error);
+      console.log("Ошбка загрузки товаров:", error);
     }
-  }
+  };
+
   useEffect(() => {
     fetchProducts();
   }, []);
   return (
     <main>
-      {/* <News /> */}/
-      <div className={styles.productList}>
+      <div className={styles.main}>
         <img className={styles.banner_img} src={banner} alt="" />
       </div>
-      <h1>Products</h1>
-      <div>
-        {products.map(({ id, name, image, price }) => {
-          return (
-            <div key={id} className={styles.productCard}>
-              <h3>{name}</h3>
-              <img src={image} alt={name} />
-              <p>Price: {price} Euro</p>
-            </div>
-          );
-          <ProductCard />;
-        })}
+      <h1 className={styles.title}>Товары</h1>
+      <div className={styles.grid}>
+        {products.map(({ id, name, image, price }) => (
+          <ProductCard
+            key={id}
+            id={id}
+            name={name}
+            image={image}
+            price={price}
+          />
+        ))}
+        ;
       </div>
     </main>
   );

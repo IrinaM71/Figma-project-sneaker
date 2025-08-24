@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import axios from "axios";
 
 export const BASE_URL = "https://664623b951e227f23aadf146.mockapi.io";
@@ -8,31 +8,32 @@ export const CartContext = createContext();
 const CartProvider = ({ children }) => {
   const [CartItems, setCartItems] = useState([]);
 
-  async function fetchCartItems() {
-    try {
-      const response = await axios.get(`${BASE_URL}/cartData`);
-      setCartItems(response.data);
-    } catch (error) {
-      console.error("Error occurred when fetching cart items: ", error);
-    }
-  }
-
-  useEffect(() => {
-    fetchCartItems();
-  }, []);
-
   const addToCart = async (item) => {
     try {
-      const response = await axios.post(`${BASE_URL}/cartData`, item);
-      setCartItems((prev) => [...prev, response.data]);
+      const { data } = await axios.get(`${BASE_URL}/Products/${item.id}`);
+      if (data.quantity > 0) {
+        await axios.put(`${BASE_URL}/Products/{item.id}`, {
+          ...data,
+          quantity: data.quantity - 1,
+        });
+        setCartItems((prev) => [...prev, item]);
+      } else {
+        console.log("Товара нет в наличии");
+      }
     } catch (error) {
-      console.log("Error adding to cart:", error);
+      console.log("Ошибка добавления", error);
     }
   };
 
   const removeFromCart = async (id) => {
     try {
-      await axios.delete(`${BASE_URL}/cartData/${id}`);
+      const { data } = await axios.get(`${BASE_URL}/Products/${id}`);
+
+      await axios.put(`${BASE_URL}/Products/${id}`, {
+        ...data,
+        quantity: data.quantity + 1,
+      });
+
       setCartItems((prev) => prev.filter((item) => item.id !== id));
     } catch (error) {
       console.log("Error removing from cart:", error);
@@ -45,9 +46,6 @@ const CartProvider = ({ children }) => {
     </CartContext.Provider>
   );
 };
-export const useCart = () => useContext(CartContext);
 export default CartProvider;
-// add item to cart
-// post -> BASE_URL/cartData
-// remove item from cart
-// delete -> BASE_URL/cartData/productId
+
+export const useCart = () => useContext(CartContext);
